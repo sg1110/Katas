@@ -12,12 +12,10 @@ module.exports.sortBlocks = function(input) {
       character => Number(character)
     )
     .sort();
-  // .join("");
 
   const lowerCaseLettersArray = letters
     .filter(letter => letter === letter.toLowerCase())
     .sort();
-  // .join("");
 
   const upperCaseLettersArray = letters
     .filter(letter => letter === letter.toUpperCase())
