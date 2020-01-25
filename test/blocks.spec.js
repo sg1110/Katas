@@ -10,18 +10,15 @@ describe("One block elements", function() {
     expect(blocks.sortBlocks("ABzx")).equal("xzAB");
   });
 
-  // it(`should order elements in numerical order `, function() {
-  //   expect(blocks.sortBlocks("9871").expect.equal("1798"));
-  // });
+  it("should order elements in numerical order ", function() {
+    expect(blocks.sortBlocks("9871")).equal("1789");
+  });
 
-  // it(`should put alphabetical elements before numerical elements`, function() {
-  //   expect(blocks.sortBlocks("21AxBz").expect.equal("xzAB12"));
-  // });
+  it("should order alphabetical elements before numerical elements", function() {
+    expect(blocks.sortBlocks("21AxBz")).equal("xzAB12");
+  });
+
+  it("should put repeating characters in seperate blocks", function() {
+    expect(blocks.sortBlocks("abacad")).equal("abcd-a-a");
+  });
 });
-
-// lowercase letters (a - z), in alphabetic order
-// uppercase letters (A - Z), in alphabetic order
-// digits (0 - 9), in ascending order
-// assert.equal(blocks("21AxBz"), "xzAB12");
-// assert.equal(blocks("abacad"), "abcd-a-a");
-// assert.equal(blocks(""), "");
