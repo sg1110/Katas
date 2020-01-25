@@ -4,7 +4,7 @@
   "description": "",
   "main": "slaphead.js",
   "scripts": {
-    "lint": "eslint \"./javascript/*.js\" --fix",
+    "lint": "eslint \"./codeWarsSolutions/*.js\" --fix",
     "pretest": "npm run lint",
     "test": "mocha ./test"
   },

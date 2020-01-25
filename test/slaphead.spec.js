@@ -17,7 +17,7 @@
 // >5 hairs --> "Hobo!"
 
 const expect = require("chai").expect;
-const slaphead = require("../javascript/slaphead.js");
+const slaphead = require("../codeWarsSolutions/slaphead.js");
 
 describe("Slaphead codewar", function() {
   it(`for 1 stray hair, it should shave off all the hair and confirm it's an Unicorn`, function() {
