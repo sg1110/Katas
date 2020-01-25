@@ -21,4 +21,6 @@ describe("One block elements", function() {
   it("should put repeating characters in seperate blocks", function() {
     expect(blocks.sortBlocks("abacad")).equal("abcd-a-a");
   });
+
+  // another scenario 'aehiklmpsty-e-e-k-s-s-t-t' to equal 'aehiklmpsty-ekst-est'
 });
