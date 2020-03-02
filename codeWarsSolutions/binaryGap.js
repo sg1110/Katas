@@ -30,15 +30,3 @@ module.exports = {
   binaryGap,
   getBinary
 };
-
-// WIP nonsense
-// let exponent = 1;
-// let baseTwoValues = [];
-// let currentValue = 1;
-// while (currentValue < n) {
-//   currentValue = Math.pow(2, exponent);
-//   baseTwoValues.push(currentValue);
-//   exponent++;
-// }
-// console.log(baseTwoValues);
-// return baseTwoValues;
