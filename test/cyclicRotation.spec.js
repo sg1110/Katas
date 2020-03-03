@@ -14,7 +14,13 @@ describe.only("Cyclic rotation", function() {
   it("Rotate should rotate an array by 4 and return the original array", function() {
     expect(cyclicRotation([1, 2, 3, 4], 4)).to.deep.equal([1, 2, 3, 4]);
   });
-  it("Rotate should rotate an array by 4 and return the original array", function() {
-    expect(cyclicRotation([1, 2, 3, 4], 5)).to.deep.equal([2, 3, 4, 1]);
+  it("Rotate should rotate an array by 5 (value longer than array by 1)", function() {
+    expect(cyclicRotation([1, 2, 3, 4], 5)).to.deep.equal([4, 1, 2, 3]);
+  });
+  it("Rotate should rotate an array by 11 (value longer than array by 6)", function() {
+    expect(cyclicRotation([1, 2, 3, 4, 5], 11)).to.deep.equal([5, 1, 2, 3, 4]);
+  });
+  it("Rotate should rotate an array by 17 (value longer than array by 12)", function() {
+    expect(cyclicRotation([1, 2, 3, 4, 5], 17)).to.deep.equal([4, 5, 1, 2, 3]);
   });
 });
