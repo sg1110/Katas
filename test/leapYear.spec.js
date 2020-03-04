@@ -1,7 +1,7 @@
 const leap = require("../codeWarsSolutions/leapYear");
 const expect = require("chai").expect;
 
-describe.only("As a user, I want to know if a year is a leap year, ", function() {
+describe("As a user, I want to know if a year is a leap year, ", function() {
   it("All years divisible by 400 are leap years", function() {
     expect(leap(2000)).to.be.true;
   });
