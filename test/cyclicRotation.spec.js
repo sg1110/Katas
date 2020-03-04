@@ -1,7 +1,7 @@
 const cyclicRotation = require("../codeWarsSolutions/cyclicRotation");
 const expect = require("chai").expect;
 
-describe.only("Cyclic rotation", function() {
+describe("Cyclic rotation", function() {
   it("Rotate array by one place", function() {
     expect(cyclicRotation([3, 8, 9, 7, 6], 1)).to.deep.equal([6, 3, 8, 9, 7]);
   });

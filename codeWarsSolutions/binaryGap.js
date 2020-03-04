@@ -26,6 +26,8 @@ function getBinary(n) {
   return Number(n).toString(2);
 }
 
+//redo
+
 module.exports = {
   binaryGap,
   getBinary
