@@ -25,5 +25,5 @@ module.exports = function tape(input) {
 
   return Math.min(...answer);
 };
-//3 4 6 10
-//10 7 7 3
+//refactor
+//add more tests

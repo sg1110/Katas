@@ -1,7 +1,7 @@
 const tape = require("../codeWarsSolutions/tapeEquilibrium");
 const expect = require("chai").expect;
 
-describe.only("Given an array of integers ", function() {
+describe("Given an array of integers ", function() {
   it("Return the lowest difference", function() {
     expect(tape([3, 1, 2, 4, 3])).to.equal(1);
   });

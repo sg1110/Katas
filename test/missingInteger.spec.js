@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const missingInteger = require("../codeWarsSolutions/missingInteger");
 
-describe.only("given an array of integers return the smallest positive integer (greater than 0) that does not occur in array", function() {
+describe("given an array of integers return the smallest positive integer (greater than 0) that does not occur in array", function() {
   it("should work for array full of positive integers with duplicate values with missing cons nr", function() {
     expect(missingInteger([1, 3, 6, 4, 1, 2])).to.deep.equal(5);
   });
