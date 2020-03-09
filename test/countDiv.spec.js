@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const countDiv = require("../codeWarsSolutions/countDiv");
 
-describe.only("Given three integers", function() {
+describe("Given three integers", function() {
   it("within 6-11 range return nr of integers that are divisible by 2", function() {
     expect(countDiv(6, 11, 2)).to.equal(3);
   });

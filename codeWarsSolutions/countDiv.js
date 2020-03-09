@@ -10,5 +10,3 @@ module.exports = function cov(start, end, diviser) {
   });
   return divisibleNumbers.length;
 };
-
-//6-11 / 2 (6 8 10)

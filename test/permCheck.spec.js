@@ -1,7 +1,7 @@
 const permCheck = require("../codeWarsSolutions/permCheck");
 const expect = require("chai").expect;
 
-describe.only("Given an array of integers confirm if the array is a permutation", function() {
+describe("Given an array of integers confirm if the array is a permutation", function() {
   it("should confirm the array is perm when all numbers appear from 1 to 4", function() {
     expect(permCheck.permCheck([4, 1, 3, 2])).to.equal(1);
   });
