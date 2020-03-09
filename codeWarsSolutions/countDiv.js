@@ -1,6 +1,6 @@
 const math = require("mathjs");
 
-module.exports = function cov(start, end, diviser) {
+function countDiv(start, end, diviser) {
   const range = math.range(start, end).toArray();
   let divisibleNumbers = [];
   range.forEach(number => {
@@ -9,4 +9,21 @@ module.exports = function cov(start, end, diviser) {
     }
   });
   return divisibleNumbers.length;
+}
+
+function countDiv2(start, end, diviser) {
+  let currentNr = start;
+  const stop = end;
+  let divisibleNumbers = [];
+  for (currentNr; currentNr <= stop; currentNr++) {
+    if (currentNr % diviser === 0) {
+      divisibleNumbers.push(currentNr);
+    }
+  }
+  return divisibleNumbers.length;
+}
+
+module.exports = {
+  countDiv,
+  countDiv2
 };

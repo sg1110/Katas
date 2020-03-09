@@ -1,12 +1,20 @@
 const expect = require("chai").expect;
-const countDiv = require("../codeWarsSolutions/countDiv");
+const count = require("../codeWarsSolutions/countDiv");
 
 describe("Given three integers", function() {
   it("within 6-11 range return nr of integers that are divisible by 2", function() {
-    expect(countDiv(6, 11, 2)).to.equal(3);
+    expect(count.countDiv(6, 11, 2)).to.equal(3);
   });
 });
 
+describe.only("Given three integers", function() {
+  it("within 6-11 range return nr of integers that are divisible by 2", function() {
+    expect(count.countDiv2(6, 11, 2)).to.equal(3);
+  });
+  it("within 3-9 (inclusive) range return nr of integers that are divisible by 3", function() {
+    expect(count.countDiv2(3, 9, 3)).to.equal(3);
+  });
+});
 // function solution(A, B, K);
 // that, given three integers A, B and K, returns the number of integers within the range [A..B] that are divisible by K, i.e.:
 // { i : A ≤ i ≤ B, i mod K = 0 }
