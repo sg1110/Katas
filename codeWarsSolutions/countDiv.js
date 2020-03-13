@@ -13,14 +13,13 @@ function countDiv(start, end, diviser) {
 
 function countDiv2(start, end, diviser) {
   let currentNr = start;
-  const stop = end;
-  let divisibleNumbers = [];
-  for (currentNr; currentNr <= stop; currentNr++) {
+  let divisibleNumbers = 0;
+  for (currentNr; currentNr <= end; currentNr++) {
     if (currentNr % diviser === 0) {
-      divisibleNumbers.push(currentNr);
+      divisibleNumbers++;
     }
   }
-  return divisibleNumbers.length;
+  return divisibleNumbers;
 }
 
 module.exports = {
