@@ -18,6 +18,14 @@ describe.only("Replace words in a given string based on the corresponding values
       })
     ).to.equal("temporary here comes the name John Doe");
   });
+  it("should replace multiple values in a string with dictionary values when some values occur mult. times", function() {
+    expect(
+      dictionaryReplacer("$temp$ $temp$ here comes the name $name$", {
+        temp: "temporary",
+        name: "John Doe"
+      })
+    ).to.equal("temporary temporary here comes the name John Doe");
+  });
   it("should not replace prefixed sufixed values in a string that are not found in dictionary", function() {
     expect(
       dictionaryReplacer("$tempaprampampam$ here comes the name $name$", {
