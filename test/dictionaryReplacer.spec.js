@@ -18,6 +18,14 @@ describe.only("Replace words in a given string based on the corresponding values
       })
     ).to.equal("temporary here comes the name John Doe");
   });
+  it("should not replace prefixed sufixed values in a string that are not found in dictionary", function() {
+    expect(
+      dictionaryReplacer("$tempaprampampam$ here comes the name $name$", {
+        temp: "temporary",
+        name: "John Doe"
+      })
+    ).to.equal("$tempaprampampam$ here comes the name John Doe");
+  });
 });
 
 // Create a method that takes a string and a dictionary,
