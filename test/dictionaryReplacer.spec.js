@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const dictionaryReplacer = require("../codeWarsSolutions/dictionaryReplacer");
 
-describe.only("Replace words in a given string based on the corresponding values in dictionary", function() {
+describe("Replace words in a given string based on the corresponding values in dictionary", function() {
   it("should not replace any values when the dictionary is empty", function() {
     expect(dictionaryReplacer("", {})).to.equal("");
   });

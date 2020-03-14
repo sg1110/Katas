@@ -4,8 +4,8 @@ module.exports = function dictionaryReplacer(string, dictionary) {
     return string;
   }
 
-  for (const aaaa in dictionary) {
-    while (string.includes(`$${aaaa}$`)) {
+  for (const key in dictionary) {
+    while (string.includes(`$${key}$`)) {
       for (const key in dictionary) {
         string = string.replace(`$${key}$`, dictionary[`${key}`]);
       }
