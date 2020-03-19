@@ -1,7 +1,7 @@
 const report = require("../codeWarsSolutions/employees");
 const expect = require("chai").expect;
 
-describe.only("Employee report", function() {
+describe("Employee report", function() {
   it("should show a list of employees, older than 18 years", function() {
     expect(report("listAbove18")).to.deep.equal(["Sepp", "Mike"]);
   });
