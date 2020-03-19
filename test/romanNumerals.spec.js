@@ -1,4 +1,4 @@
-const converter = require("../javascript/romanNumeralConverter");
+const converter = require("../codeWarsSolutions/romanNumerals");
 const expect = require("chai").expect;
 
 describe("Given general number convert to roman numerals", function() {
