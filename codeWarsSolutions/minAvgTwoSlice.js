@@ -1,28 +1,26 @@
 module.exports = function minAvgTwoSlice(inputNumbers) {
-  let sums = [];
+  let currentLowestAvgStartIndex = 0;
+  let currentLowestAvg = (inputNumbers[0] + inputNumbers[1]) / 2;
 
-  for (let i = 0; i < inputNumbers.length; i++) {
-    if (i === inputNumbers.length - 1) {
-      sums.push(
-        inputNumbers.reduce((total, number) => (total = total + number)) /
-          inputNumbers.length
-      );
-    } else {
-      sums.push((inputNumbers[i] + inputNumbers[i + 1]) / 2);
+  for (let i = 1; i < inputNumbers.length; i++) {
+    if ((inputNumbers[i] + inputNumbers[i + 1]) / 2 < currentLowestAvg) {
+      currentLowestAvgStartIndex = i;
+      currentLowestAvg = (inputNumbers[i] + inputNumbers[i + 1]) / 2;
+    }
+    if (
+      (inputNumbers[i] + inputNumbers[i + 1] + inputNumbers[i + 2]) / 3 <
+      currentLowestAvg
+    ) {
+      currentLowestAvgStartIndex = i;
+      currentLowestAvg = (inputNumbers[i] + inputNumbers[i + 1]) / 3;
     }
   }
-
-  console.log(sums);
-  const lowestAvg = Math.min(...sums);
-  const lowestIndex = sums.indexOf(lowestAvg);
-  return lowestIndex;
+  if (
+    inputNumbers.reduce((total, number) => (total += number)) /
+      inputNumbers.length <
+    currentLowestAvg
+  ) {
+    currentLowestAvgStartIndex = 0;
+  }
+  return currentLowestAvgStartIndex;
 };
-
-// 4 2 2 5 = 3.25
-
-// 4 2 2 = 2.66
-// 2 2 5  = 3
-
-// 4 2 = 3
-// 2 2 = 2
-// 2 5 = 3.5
