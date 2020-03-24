@@ -7,7 +7,7 @@ describe("Given three integers", function() {
   });
 });
 
-describe.only("Given three integers", function() {
+describe("Given three integers", function() {
   it("within 6-11 range return nr of integers that are divisible by 2", function() {
     expect(count.countDiv2(6, 11, 2)).to.equal(3);
   });
