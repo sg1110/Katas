@@ -17,7 +17,7 @@ describe.only("Given yahtzee roll calculate the score", () => {
       })
     );
   });
-  describe.only(`Scoring category -  ${pair}`, () => {
+  describe(`Scoring category -  ${pair}`, () => {
     [
       { it: [1, 1, 2, 4, 4], expect: 8 },
       { it: [3, 3, 3, 4, 4], expect: 8 },
