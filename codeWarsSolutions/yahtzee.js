@@ -3,6 +3,7 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
   const pair = "pair";
   const twoPairs = "two pairs";
   const fourOfAKind = "four of a kind";
+  const smallStraight = "small straight";
 
   switch (categoryName) {
     case onesTwosThreesFoursFiveSixes:
@@ -13,6 +14,8 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
       return sumOfTwoPairs(diceValues);
     case fourOfAKind:
       return sumOfFourOfAKind(diceValues);
+    case smallStraight:
+      return smallStraightScore(diceValues);
     default:
       return 0;
   }
@@ -42,6 +45,25 @@ function sumOfFourOfAKind(diceValues) {
   } else {
     return 0;
   }
+}
+
+function smallStraightScore(diceValues) {
+  return hasSmallStraight(diceValues) ? 15 : 0;
+}
+
+function hasSmallStraight(diceValues) {
+  diceValues.sort();
+  if (diceValues[0] !== 1) return false;
+  for (
+    let dieLocation = 0;
+    dieLocation < diceValues.length - 1;
+    dieLocation++
+  ) {
+    if (diceValues[dieLocation + 1] !== diceValues[dieLocation] + 1) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function hasFourOfAKind(filtered) {
