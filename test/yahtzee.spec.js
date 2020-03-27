@@ -68,4 +68,17 @@ describe.only("Given yahtzee roll calculate the score", () => {
       })
     );
   });
+  const largeStraight = "large straight";
+  describe(`Scoring category -  ${largeStraight}`, () => {
+    [
+      { it: [2, 3, 4, 5, 6], expect: 20 },
+      { it: [2, 1, 3, 5, 4], expect: 0 },
+      { it: [3, 3, 3, 3, 4], expect: 0 },
+      { it: [2, 2, 2, 2, 1], expect: 0 }
+    ].forEach(run =>
+      it(`should calculate ${run.it} the score as ${run.expect}`, () => {
+        expect(yahtzee(largeStraight, run.it)).to.equal(run.expect);
+      })
+    );
+  });
 });
