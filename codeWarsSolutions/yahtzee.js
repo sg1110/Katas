@@ -2,6 +2,7 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
   const onesTwosThreesFoursFiveSixes = "one, two, three, four, five, sixes";
   const pair = "pair";
   const twoPairs = "two pairs";
+  const fourOfAKind = "four of a kind";
 
   switch (categoryName) {
     case onesTwosThreesFoursFiveSixes:
@@ -10,6 +11,8 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
       return sumOfHighestDicePair(diceValues);
     case twoPairs:
       return sumOfTwoPairs(diceValues);
+    case fourOfAKind:
+      return sumOfFourOfAKind(diceValues);
     default:
       return 0;
   }
@@ -17,29 +20,37 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
 
 function sumOfTwoPairs(diceValues) {
   let occurence = mapOccurence(diceValues);
-
   Object.filter = (occurence, frequency) =>
     Object.keys(occurence)
       .filter(key => frequency(occurence[key]))
       .reduce((res, key) => ((res[key] = occurence[key]), res), {});
-
   let filtered = Object.filter(occurence, die => die >= 2);
-
-  // let ff = Object.keys(occurence).filter(dieValue => occurence[dieValue] >= 2);
-  // console.log(ff);
-
   if (Object.keys(filtered).length < 2 && !hasFourOfAKind(filtered)) return 0;
   if (hasFourOfAKind(filtered)) return Object.keys(filtered)[0] * 4;
-
   return Object.entries(filtered)
     .map(([die]) => die * 2)
     .reduce((total, score) => (total += score));
+}
+
+function sumOfFourOfAKind(diceValues) {
+  if (hasFourOfAKind2(diceValues)) {
+    const dieOccurence = mapOccurence(diceValues);
+    const sortedByDieOccurence = Object.entries(dieOccurence).sort(
+      (die1, die2) => die2[1] - die1[1]
+    );
+    return sortedByDieOccurence[0][0] * 4;
+  } else {
+    return 0;
+  }
 }
 
 function hasFourOfAKind(filtered) {
   return Object.values(filtered)[0] >= 4 ? true : false;
 }
 
+function hasFourOfAKind2(dice) {
+  return new Set(dice).size === 2 ? true : false;
+}
 function sumOfHighestDicePair(diceValues) {
   let occurence = mapOccurence(diceValues);
   let highestValues = 0;

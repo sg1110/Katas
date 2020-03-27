@@ -43,4 +43,16 @@ describe.only("Given yahtzee roll calculate the score", () => {
       })
     );
   });
+  const fourOfAKind = "four of a kind";
+  describe(`Scoring category -  ${fourOfAKind}`, () => {
+    [
+      { it: [1, 1, 2, 4, 4], expect: 0 },
+      { it: [3, 3, 3, 3, 4], expect: 12 },
+      { it: [2, 2, 2, 2, 1], expect: 8 }
+    ].forEach(run =>
+      it(`should calculate ${run.it} the score as ${run.expect}`, () => {
+        expect(yahtzee(fourOfAKind, run.it)).to.equal(run.expect);
+      })
+    );
+  });
 });
