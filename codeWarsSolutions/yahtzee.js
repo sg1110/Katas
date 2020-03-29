@@ -28,24 +28,19 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
       return yahtzeeScore(diceValues);
     case chance:
       return chanceScore(diceValues);
-
     default:
       return 0;
   }
 };
 
 function chanceScore(diceValues) {
-  return diceValues.reduce((total, number) => (total += number));
+  return sumDiceValues(diceValues);
 }
 
 function yahtzeeScore(diceValues) {
   const uniqueDice = new Set(diceValues);
   return uniqueDice.size === 1 ? 50 : 0;
 }
-Object.filter = (occurence, frequency) =>
-  Object.keys(occurence)
-    .filter(key => frequency(occurence[key]))
-    .reduce((res, key) => ((res[key] = occurence[key]), res), {});
 
 function sumOfTwoPairs(diceValues) {
   let occurence = mapOccurence(diceValues);
@@ -93,6 +88,17 @@ function sumOfFullHouseScore(diceValues) {
   }
 }
 
+function sumOfHighestDicePair(diceValues) {
+  let occurence = mapOccurence(diceValues);
+  let highestValues = 0;
+  for (const die in occurence) {
+    if (occurence[die] >= 2 && die > highestValues) {
+      highestValues = die;
+    }
+  }
+  return highestValues * 2;
+}
+
 function hasStraight(diceValues) {
   for (
     let dieLocation = 0;
@@ -113,16 +119,6 @@ function hasFourOfAKind(filtered) {
 function hasFourOfAKind2(dice) {
   return new Set(dice).size === 2 ? true : false;
 }
-function sumOfHighestDicePair(diceValues) {
-  let occurence = mapOccurence(diceValues);
-  let highestValues = 0;
-  for (const die in occurence) {
-    if (occurence[die] >= 2 && die > highestValues) {
-      highestValues = die;
-    }
-  }
-  return highestValues * 2;
-}
 
 function mapOccurence(diceValues) {
   let occurence = {};
@@ -135,3 +131,8 @@ function mapOccurence(diceValues) {
 function sumDiceValues(diceValues) {
   return diceValues.reduce((total, die) => (total += die));
 }
+
+Object.filter = (occurence, frequency) =>
+  Object.keys(occurence)
+    .filter(key => frequency(occurence[key]))
+    .reduce((res, key) => ((res[key] = occurence[key]), res), {});

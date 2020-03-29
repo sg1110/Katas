@@ -1,7 +1,7 @@
 const yahtzee = require("../codeWarsSolutions/yahtzee");
 const expect = require("chai").expect;
 
-describe("Given yahtzee roll calculate the score", () => {
+describe.only("Given yahtzee roll calculate the score", () => {
   const onesTwosThreesFoursFiveSixes = "one, two, three, four, five, sixes";
   describe(`Scoring category - ${onesTwosThreesFoursFiveSixes}`, () => {
     [
@@ -82,7 +82,7 @@ describe("Given yahtzee roll calculate the score", () => {
     );
   });
   const fullHouse = "full house";
-  describe.only(`Scoring category -  ${fullHouse}`, () => {
+  describe(`Scoring category -  ${fullHouse}`, () => {
     [
       { it: [2, 2, 2, 3, 3], expect: 12 },
       { it: [5, 5, 6, 6, 6], expect: 28 },
