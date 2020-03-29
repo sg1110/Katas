@@ -55,13 +55,15 @@ function sumOfTwoPairs(diceValues) {
 function sumOfFourOfAKind(diceValues) {
   if (hasFourOfAKind2(diceValues)) {
     const dieOccurence = mapOccurence(diceValues);
-    const sortedByDieOccurence = Object.entries(dieOccurence).sort(
-      (die1, die2) => die2[1] - die1[1]
-    );
+    const sortedByDieOccurence = sortObject(dieOccurence);
     return sortedByDieOccurence[0][0] * 4;
   } else {
     return 0;
   }
+}
+
+function sortObject(dieOccurence) {
+  return Object.entries(dieOccurence).sort((die1, die2) => die2[1] - die1[1]);
 }
 
 function smallStraightScore(diceValues) {
@@ -75,9 +77,7 @@ function largeStraightScore(diceValues) {
 function sumOfFullHouseScore(diceValues) {
   const occurence = mapOccurence(diceValues);
   const filtered = Object.filter(occurence, die => die >= 2);
-  const sortedByDieOccurence = Object.entries(filtered).sort(
-    (die1, die2) => die2[1] - die1[1]
-  );
+  const sortedByDieOccurence = sortObject(filtered);
   if (sortedByDieOccurence[0][1] === 3 && sortedByDieOccurence[1][1] === 2) {
     return (
       Number(sortedByDieOccurence[0][0]) * 3 +
