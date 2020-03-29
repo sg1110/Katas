@@ -1,7 +1,7 @@
 const yahtzee = require("../codeWarsSolutions/yahtzee");
 const expect = require("chai").expect;
 
-describe.only("Given yahtzee roll calculate the score", () => {
+describe("Given yahtzee roll calculate the score", () => {
   const onesTwosThreesFoursFiveSixes = "one, two, three, four, five, sixes";
   describe(`Scoring category - ${onesTwosThreesFoursFiveSixes}`, () => {
     [
@@ -78,6 +78,45 @@ describe.only("Given yahtzee roll calculate the score", () => {
     ].forEach(run =>
       it(`should calculate ${run.it} the score as ${run.expect}`, () => {
         expect(yahtzee(largeStraight, run.it)).to.equal(run.expect);
+      })
+    );
+  });
+  const fullHouse = "full house";
+  describe.only(`Scoring category -  ${fullHouse}`, () => {
+    [
+      { it: [2, 2, 2, 3, 3], expect: 12 },
+      { it: [5, 5, 6, 6, 6], expect: 28 },
+      { it: [3, 3, 3, 3, 4], expect: 0 },
+      { it: [2, 2, 2, 1, 1], expect: 8 }
+    ].forEach(run =>
+      it(`should calculate ${run.it} the score as ${run.expect}`, () => {
+        expect(yahtzee(fullHouse, run.it)).to.equal(run.expect);
+      })
+    );
+  });
+  const yahtzeee = "yahtzee!";
+  describe(`Scoring category -  ${yahtzeee}`, () => {
+    [
+      { it: [2, 2, 2, 2, 2], expect: 50 },
+      { it: [1, 1, 1, 1, 1], expect: 50 },
+      { it: [3, 3, 3, 3, 4], expect: 0 },
+      { it: [2, 2, 2, 1, 1], expect: 0 }
+    ].forEach(run =>
+      it(`should calculate ${run.it} the score as ${run.expect}`, () => {
+        expect(yahtzee(yahtzeee, run.it)).to.equal(run.expect);
+      })
+    );
+  });
+  const chance = "chance!";
+  describe(`Scoring category -  ${chance}`, () => {
+    [
+      { it: [2, 2, 2, 2, 2], expect: 10 },
+      { it: [1, 1, 1, 1, 1], expect: 5 },
+      { it: [3, 3, 3, 3, 4], expect: 16 },
+      { it: [2, 2, 2, 1, 1], expect: 8 }
+    ].forEach(run =>
+      it(`should calculate ${run.it} the score as ${run.expect}`, () => {
+        expect(yahtzee(chance, run.it)).to.equal(run.expect);
       })
     );
   });

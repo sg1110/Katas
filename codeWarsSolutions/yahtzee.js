@@ -5,6 +5,9 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
   const fourOfAKind = "four of a kind";
   const smallStraight = "small straight";
   const largeStraight = "large straight";
+  const fullHouse = "full house";
+  const yahtzee = "yahtzee!";
+  const chance = "chance!";
 
   switch (categoryName) {
     case onesTwosThreesFoursFiveSixes:
@@ -19,17 +22,33 @@ module.exports = function yahtzeeScorer(categoryName, diceValues) {
       return smallStraightScore(diceValues);
     case largeStraight:
       return largeStraightScore(diceValues);
+    case fullHouse:
+      return sumOfFullHouseScore(diceValues);
+    case yahtzee:
+      return yahtzeeScore(diceValues);
+    case chance:
+      return chanceScore(diceValues);
+
     default:
       return 0;
   }
 };
 
+function chanceScore(diceValues) {
+  return diceValues.reduce((total, number) => (total += number));
+}
+
+function yahtzeeScore(diceValues) {
+  const uniqueDice = new Set(diceValues);
+  return uniqueDice.size === 1 ? 50 : 0;
+}
+Object.filter = (occurence, frequency) =>
+  Object.keys(occurence)
+    .filter(key => frequency(occurence[key]))
+    .reduce((res, key) => ((res[key] = occurence[key]), res), {});
+
 function sumOfTwoPairs(diceValues) {
   let occurence = mapOccurence(diceValues);
-  Object.filter = (occurence, frequency) =>
-    Object.keys(occurence)
-      .filter(key => frequency(occurence[key]))
-      .reduce((res, key) => ((res[key] = occurence[key]), res), {});
   let filtered = Object.filter(occurence, die => die >= 2);
   if (Object.keys(filtered).length < 2 && !hasFourOfAKind(filtered)) return 0;
   if (hasFourOfAKind(filtered)) return Object.keys(filtered)[0] * 4;
@@ -56,6 +75,22 @@ function smallStraightScore(diceValues) {
 
 function largeStraightScore(diceValues) {
   return diceValues.sort()[0] === 2 && hasStraight(diceValues) ? 20 : 0;
+}
+
+function sumOfFullHouseScore(diceValues) {
+  const occurence = mapOccurence(diceValues);
+  const filtered = Object.filter(occurence, die => die >= 2);
+  const sortedByDieOccurence = Object.entries(filtered).sort(
+    (die1, die2) => die2[1] - die1[1]
+  );
+  if (sortedByDieOccurence[0][1] === 3 && sortedByDieOccurence[1][1] === 2) {
+    return (
+      Number(sortedByDieOccurence[0][0]) * 3 +
+      Number(sortedByDieOccurence[1][0] * 2)
+    );
+  } else {
+    return 0;
+  }
 }
 
 function hasStraight(diceValues) {
