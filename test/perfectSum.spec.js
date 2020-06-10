@@ -1,7 +1,7 @@
 // const perfectSum = require("../codeWarsSolutions/perfectSum");
 // const expect = require("chai").expect;
 
-// describe.only("Given and array of integers and sum. Print all subsets of given array with sum equal given sum", function() {
+// describe("Given and array of integers and sum. Print all subsets of given array with sum equal given sum", function() {
 //   it("should print 3 different subset options for [2,3,5,6,8,10", function() {
 //     expect(perfectSum([2, 3, 5, 6, 8, 10], 10)).to.deep.equal([
 //       "5 2 3",

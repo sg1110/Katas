@@ -241,3 +241,36 @@ describe("Word wrapper", function() {
     expect(wrapper.recursiveWrap("123 12 12", 3)).to.equal("123\n12\n12");
   });
 });
+
+describe("Given a string divide it into a line that is no more than specified limit", function() {
+  it("should return the input string uncut when it is shorter than specifiec line limit", function() {
+    expect(wrapper.recursiveWrapCountForward("hello", 8)).to.deep.equal([
+      "hello"
+    ]);
+  });
+  it("should wrap the line at the specified limit when breakpoint is at the space", function() {
+    expect(wrapper.recursiveWrapCountForward("hello world", 5)).to.deep.equal([
+      "hello",
+      "world"
+    ]);
+  });
+  it("should wrap the line at the previous space before the line limit when the breakpoint at the specified limit is not empty", function() {
+    expect(wrapper.recursiveWrapCountForward("1234 678", 6)).to.deep.equal([
+      "1234",
+      "678"
+    ]);
+  });
+  it("should wrap for more than 2 lines", function() {
+    expect(wrapper.recursiveWrapCountForward("1234 678 901", 6)).to.deep.equal([
+      "1234",
+      "678",
+      "901"
+    ]);
+  });
+  it("should wrap words correctly with more than one word being on the same line", function() {
+    expect(wrapper.recursiveWrapCountForward("1234 567 901", 7)).to.deep.equal([
+      "1234",
+      "567 901"
+    ]);
+  });
+});
