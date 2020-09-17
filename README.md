@@ -1,1 +1,1 @@
-# codewars
+# Misc Katas
